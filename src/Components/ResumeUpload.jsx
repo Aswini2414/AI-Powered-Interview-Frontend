@@ -47,6 +47,7 @@ const ResumeUpload = () => {
           name: parsed.name || "",
           email: parsed.email || "",
           phone: parsed.phone || "",
+          skills: parsed.skills,
         });
         setStep("fillFields");
       }
@@ -65,7 +66,7 @@ const ResumeUpload = () => {
     }
 
     const id = uuidv4();
-    const candidate = { id, ...fields, skills: [] };
+    const candidate = { id, ...fields };
 
     dispatch(addCandidate(candidate));
     dispatch(
