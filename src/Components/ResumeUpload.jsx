@@ -32,9 +32,9 @@ const ResumeUpload = () => {
       const id = uuidv4();
       parsed = { id, ...parsed };
 
-      dispatch(addCandidate(parsed));
 
       if (parsed.name && parsed.email && parsed.phone) {
+        dispatch(addCandidate(parsed));
         dispatch(
           startInterviewWithSkills({
             candidateId: parsed.id,
