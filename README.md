@@ -1,6 +1,6 @@
 #   AI Powered Interview Assistant
 
-Demo(https://ai-powered-interview.netlify.app/)
+[Demo](https://ai-powered-interview.netlify.app/)
 
 It has 2 tabs i.e Interviewee(Chat) and Interviewer(Dashboard)
 
