@@ -7,7 +7,7 @@ It has 2 tabs i.e Interviewee(Chat) and Interviewer(Dashboard)
 <img width="1920" height="971" alt="image" src="https://github.com/user-attachments/assets/0afdd96d-3299-471e-9242-32ed77191e93" />
 
 
-Intially the interviewee has to upload the resume which is in pdf or docx format.Internally it extracts the name,email,Phone from the resume, if any of them were mentioned in the resume, system allows the interviewee to enter the details manually.
+Intially the interviewee has to upload the resume which is in pdf or docx format.Internally it extracts the name,email,Phone from the resume, if any of them were not mentioned in the resume, system allows the interviewee to enter the details manually.
 
 <img width="1920" height="975" alt="image" src="https://github.com/user-attachments/assets/11edeb7f-16d6-48eb-9525-afe6e380587a" />
 
