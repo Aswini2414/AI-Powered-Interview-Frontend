@@ -31,6 +31,6 @@ After attempting all the questions, the following screen appears
 
 
 
-And the Interviewer(Dashboard) tab the score and summary of the interviewee will be available
+And the Interviewer(Dashboard) tab shows the score, summary and also the chat history of the interviewee
 
 <img width="1920" height="968" alt="image" src="https://github.com/user-attachments/assets/9e25800b-d50e-487a-9a7f-f9c1b0f0ea82" />
