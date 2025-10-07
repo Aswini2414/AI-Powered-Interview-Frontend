@@ -4,6 +4,8 @@ import {
   addAnswer,
   finishInterview,
   nextQuestion,
+  pauseTimer,
+  resumeTimer,
   setTimer,
   tickTimer,
 } from "../Store/Slices/sessionSlice";
@@ -15,10 +17,16 @@ import { evaluateInterview } from "../utils/evaluator";
 
 const InterviewFlow = () => {
   const dispatch = useDispatch();
-  const { finished, questions, currentIndex, timer, candidateId, answers } =
-    useSelector((state) => state.session);
+  const {
+    finished,
+    questions,
+    currentIndex,
+    timer,
+    candidateId,
+    answers,
+    isRunning,
+  } = useSelector((state) => state.session);
   const [answer, setAnswer] = useState("");
-
   const currentQuestion = questions[currentIndex];
 
   useEffect(() => {
@@ -27,15 +35,15 @@ const InterviewFlow = () => {
     }
   }, [currentQuestion, dispatch]);
 
-  useEffect(() => {
-    if (!currentQuestion || timer <= 0) return;
+  // useEffect(() => {
+  //   if (!currentQuestion || timer <= 0) return;
 
-    const interval = setInterval(() => {
-      dispatch(tickTimer());
-    }, 1000);
+  //   const interval = setInterval(() => {
+  //     dispatch(tickTimer());
+  //   }, 1000);
 
-    return () => clearInterval(interval);
-  }, [timer, dispatch, currentQuestion]);
+  //   return () => clearInterval(interval);
+  // }, [timer, dispatch, currentQuestion]);
 
   const handleFinish = async () => {
     const evaluation = await evaluateInterview(answers);
@@ -85,6 +93,16 @@ const InterviewFlow = () => {
   };
 
   useEffect(() => {
+    if (!isRunning || timer <= 0) return;
+
+    const interval = setInterval(() => {
+      dispatch(tickTimer());
+    }, 1000);
+
+    return () => clearInterval(interval);
+  }, [isRunning, timer, dispatch, currentQuestion]);
+
+  useEffect(() => {
     if (timer === 0 && currentQuestion) {
       handleSubmit();
     }
@@ -120,6 +138,11 @@ const InterviewFlow = () => {
       <p className="mb-4">
         <strong>Time Left:</strong> {timer}s
       </p>
+      {isRunning ? (
+        <button onClick={() => dispatch(pauseTimer())}>Pause</button>
+      ) : (
+        <button onClick={() => dispatch(resumeTimer())}>Resume</button>
+      )}
 
       <textarea
         type="text"
